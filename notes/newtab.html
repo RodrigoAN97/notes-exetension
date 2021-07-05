@@ -1,0 +1,185 @@
+<html>
+	<head>
+		<title>Notes</title>
+		<meta charset="utf-8">
+		<style>
+			html, body{
+				height: 100%;
+				min-width: 100%;
+				margin: 0;
+				padding: 0;
+				font-size: 100%;
+			}
+			h1{
+				font-family: 'Benne', monospace;
+				font-weight: 900;
+			}
+			body.dark{
+				color: #ffffff;
+				background: #181818;
+			}
+			div.main{
+				display: flex;
+				height: 100%;
+			}
+			aside.sidebar{
+				width: 300px;
+				background:#f0f8ff;
+				height: 100%;
+				padding: 25px;
+			}
+			.dark aside.sidebar{
+				background: #404040;
+			}
+			section.holder{
+				width: -webkit-fill-available;
+				height: 100%;
+				padding: 25px;
+			}
+			div.icon{
+				height: 30px;
+				width: 30px;
+				line-height: 30px;
+				font-size: 28px;
+			}
+			.holder div.icon{
+				cursor: pointer;
+			}
+			[contenteditable]:focus{
+				outline:0px solid transparent;
+			}
+			[placeholder]:empty:before{
+				content: attr(placeholder);
+				color:chocolate;
+				cursor: text;
+			}
+			[placeholder]:empty:focus:before{
+				content: "";
+			}
+			ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			.newNote, ul li {
+				padding: 5px 0 5px 5px;
+				cursor: pointer;
+			}
+			.dark .newNote:hover, .dark ul li.active, .dark ul li:hover {
+				background-color:rgb(0,0,0,0.35);
+				border-radius: 5px;
+			}
+
+			.newNote:hover, ul li.active, ul li:hover {
+				background-color:rgba(148, 142, 142, 0.35);
+				border-radius: 5px;
+			}
+
+			.deleteNote{
+				margin-right: 15px;
+			}
+			.saveNote, .deleteNote{
+				float: right;
+				padding: 10px 20px;
+				background-color: transparent;
+				border-radius: 5px;
+				border: 2px solid;
+				color:black;
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: 3px;
+				cursor: pointer;
+			}
+
+			.mode{
+				top: 10px;
+    		position: absolute;
+    		right: 30px;
+				cursor: pointer;
+			}
+
+			.mode .tooltipText {
+  		visibility: hidden;
+  		width: 120px;
+  		background-color: black;
+  		color: #fff;
+  		text-align: center;
+  		border-radius: 6px;
+  		padding: 5px 0;
+  		/* Position the tooltip */
+  		position: absolute;
+  		z-index: 1;
+			top: -5px;
+  		right: 105%;
+}
+
+			.mode:hover .tooltipText {
+			  visibility: visible;
+			}
+
+			.dark .saveNote, .dark .deleteNote{
+				color: white;
+			}
+			.dark .saveNote:hover, .dark .deleteNote:hover{
+				background: white;
+				color: black;
+			}
+			.saveNote:hover, .deleteNote:hover{
+				background: black;
+				color: white;
+			}
+			.hidden {
+				display: none;
+			}
+			.postBody {
+				min-height: 100px;
+				width: 100%;
+			}
+			.signIn{
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+			.loginArea, .loggedInArea{
+				display: none;
+			}
+		</style>
+	</head>
+	<body class="dark">
+		<div class="main">
+			<aside class="sidebar">
+				<div class="loginArea">
+					<div>
+						<label>Email:</label>
+						<input type="email">
+					</div>
+					<div>
+						<label>Password:</label>
+						<input type="password">
+					</div>
+					<button type="button" class="loginButton">Login</button>
+				</div>
+				<div class="loggedInArea">
+					<p>Logged In as: <span class="user"></span></p>
+					<button class="logoutButton">Logout</button>
+				</div>
+				<div class="icon">🖋</div>
+				<h1>Notes</h1>
+				<div class="newNote">📝 New Note</div>
+				<div class="pages-holder"></div>
+			</aside>
+			<section class="holder">
+				<div class="icon">🔖</div>
+
+				<div class="mode">🔅
+					<span class="tooltipText">Light Mode</span>
+				</div>
+				<button class="saveNote hidden">Save</button>
+				<button class="deleteNote hidden">Delete</button>
+
+				<h1 contenteditable="true" placeholder="Untitled">Note Title</h1>
+				<div class="postBody" contenteditable="true" placeholder="Write your note here...">Content...</div>
+			</section>
+		</div>
+		<script src="app.js"></script>
+	</body>
+</html>

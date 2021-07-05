@@ -1,0 +1,14 @@
+{
+  "name": "Notes",
+  "version": "1.0",
+  "description": "Your notes will be remembered every time you open a new tab!",
+  "background": {
+    "page": "background.html",
+    "persistent": false
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js https://*.firebaseio.com https://www.googleapis.com; object-src 'self'"
+}
